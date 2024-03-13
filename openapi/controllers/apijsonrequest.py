@@ -13,7 +13,7 @@ import werkzeug.wrappers
 import odoo
 from odoo.http import (
     Response,
-    Root,
+    root,
     SessionExpiredException,
     WebRequest,
     request,
@@ -224,7 +224,7 @@ def api_route(route=None, **kw):
     return decorator
 
 
-get_request_original = Root.get_request
+get_request_original = root.get_request
 
 
 def api_get_request(self, httprequest):
@@ -239,4 +239,4 @@ def api_get_request(self, httprequest):
     return get_request_original(self, httprequest)
 
 
-Root.get_request = api_get_request
+root.get_request = api_get_request
